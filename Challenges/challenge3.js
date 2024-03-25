@@ -1,31 +1,25 @@
-// deductions
-// nssf
-// nhif
-// payee
-//housing levy
-
 let grosssalary = 80000
 let benefits = 5000
 
 //Grosspay calculations 
 function grosspay(grosssalary,benefits){
 
-     return  grosssalary + benefits ;
+     return  grosssalary + benefits ; // Grosspay amount
 }  
 
 //payee calculation as per the KRA
 function calculatepayee(grosspay){
     console.log(grosspay)
     if(grosssalary => 24000 && grosssalary <= 288000){
-        payee = grosspay * 0.1
-        return `Your payee is ksh${payee}`;
+        payee = grosspay * 0.1 // 10% 0f the grosspay
+        return `Your payee is ksh${payee}`; // print a string of the grosspay and value in digits
 
     }
 }
 
 console.log(calculatepayee(grosspay(grosssalary,benefits)))
 
-
+// NSSF deductions calculations.
 let nssf = 0.06
 function calculateNssf(nssf){
     nssf = grosssalary * 0.06
@@ -36,7 +30,7 @@ function calculateNssf(nssf){
 console.log(calculateNssf(nssf));
 
 let nhifDeductions = 0
-function calculateNhif(nhifDeductions){
+function calculateNhif(nhifDeductions){ //conditions of the Nssf deductions depending on the grosssalary
         if(grosssalary >= 0 && grosssalary <= 5999){
             return 150;
         }else if(grosssalary >= 6000 && grosssalary <= 7999){
@@ -71,8 +65,10 @@ function calculateNhif(nhifDeductions){
             return 1600;
         }
 }
-    console.log(calculateNhif(nhifDeductions));
+    console.log(calculateNhif(nhifDeductions)); //Display the deductions per the gross salary
 
+
+//calculations of the final salary.
  function calculatenetsalary(grosssalary){
     netsalary = grosspay(grosssalary, benefits) - (calculateNhif(nhifDeductions) + (calculateNssf(nhifDeductions)) + (calculatepayee(grosspay)))
     console.log(calculatenetsalary(netsalary))
